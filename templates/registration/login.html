@@ -1,0 +1,30 @@
+{% comment %} <form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Login</button>
+</form> {% endcomment %}
+
+
+<style>
+.green {
+    color: green
+}
+.red {
+    color: red
+}
+.blue {
+    color: blue
+}
+</style>
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="exampleInputEmail1" class="green">Username</label>
+    <input name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    
+    <label for="exampleInputPassword1" class="red">Password</label>
+    
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+    <button type="submit" class="blue">Login</button>
+</form>

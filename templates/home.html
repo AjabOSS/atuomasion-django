@@ -1,0 +1,27 @@
+{% load static %}
+<hr>
+<h1> user : {{ user }} | username : {{ user.username }} </h1>
+
+{% for a in letter %}
+    
+    {% if a.author == user %}
+        <p>{{a.file}}</p>
+        {{a.title}} : <a href="{{a.file.url}}" download="{{a.file.url}}">Download</a>
+    <hr>
+    {% endif %}
+    
+{% endfor %}
+
+
+<hr>
+
+<style>
+.a {
+    color: green
+}
+</style>
+
+<p class="a">test green</p>
+    
+
+    
