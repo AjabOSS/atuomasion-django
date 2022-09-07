@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'db_file_storage',
     'myuser',
     'letter',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -139,6 +140,6 @@ AUTH_USER_MODEL = 'myuser.MyUser'
 
 
 #redirect
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
-SIGNUP_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
+SIGNUP_REDIRECT_URL = "home"

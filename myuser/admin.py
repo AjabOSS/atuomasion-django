@@ -52,3 +52,8 @@ class UserAdmin(BaseUserAdmin):
     
 
 admin.site.register(MyUser, UserAdmin)
+
+
+
+
+

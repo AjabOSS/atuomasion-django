@@ -1,12 +1,23 @@
 {% load static %}
+
+
+{% if user.is_authenticated %}
+    <span>{{user}}</span> | <a href="{% url 'logout' %}">Log Out</a>
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
+    
+
 <hr>
 <h1> user : {{ user }} | username : {{ user.username }} </h1>
 
 {% for a in letter %}
     
     {% if a.author == user %}
+        <p>{{a.author}}</p>
         <p>{{a.file}}</p>
         {{a.title}} : <a href="{{a.file.url}}" download="{{a.file.url}}">Download</a>
+
     <hr>
     {% endif %}
     

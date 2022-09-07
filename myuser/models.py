@@ -2,9 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import PermissionsMixin
-import shortuuid
+from django.contrib.auth.models import AbstractUser
 
-s = shortuuid.ShortUUID(alphabet="0123456789")
 
 # otp = s.random(length=5)
 
@@ -70,7 +69,7 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
-    
+
 
     def __str__(self):
         return self.username
