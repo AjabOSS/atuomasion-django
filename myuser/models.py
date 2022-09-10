@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import AbstractUser
-
+from django.utils.translation import gettext as _
 
 # otp = s.random(length=5)
 
@@ -56,9 +56,9 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    is_level_1 = models.BooleanField(default=False)
-    is_level_2 = models.BooleanField(default=False)
-    is_level_3 = models.BooleanField(default=False)
+    is_level_2 = models.BooleanField(_("مدیر عامل"), default=False)
+    is_level_1 = models.BooleanField(_("مدیر"), default=False)
+    is_level_3 = models.BooleanField(_("کارمند"), default=False)
     
 
 

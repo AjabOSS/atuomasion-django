@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+
+
+<hr>
+<hr>
+
+  {% for a in letter %}
+    
+    {% if a.target == user or user.is_superuser %}
+      
+      <ul class="list-group list-group-horizontal">
+        <li class="list-group-item"> موضوع : {{a.title}}</li>
+        <li class="list-group-item"> فرستنده : {{a.author}}</li>
+        <li class="list-group-item"> گیرنده : {{a.target}}</li>
+        <li class="list-group-item"> خوانده شده : {{a.read}}</li>
+        <li class="list-group-item"> زمان ارسال : {{a.publishing_date}}</li>
+        <li class="list-group-item"><a href="{{a.file.url}}" download="{{a.file.url}}">Download</a> </li>
+        <li class="list-group-item"><a href="{% url 'letter_detail' a.pk %}">Details</a></li>
+        {% if user.is_level_2 or user.is_superuser %}
+          <li class="list-group-item"><a href="{% url 'letter_edit' a.pk %}">Edit</a></li>
+        {% endif %}
+        
+      </ul>
+    {% endif %}
+      
+  {% endfor %}
+{% endblock content %}

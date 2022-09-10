@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext as _
 from django.conf import settings
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from .validators import validate_file_extension
 from django.utils import timezone
 from django.contrib.auth import get_user_model
@@ -29,11 +29,26 @@ class Letter(models.Model):
                         related_name = 'Letter',
                         )
 
-    publishing_date = models.DateTimeField(
-                        default = timezone.now,
-                        blank = True,
+    target          = models.ForeignKey(
+                        settings.AUTH_USER_MODEL,
+                        on_delete=models.PROTECT,
+                        default = None
                         )
 
-    file            = models.FileField(_(" پیوست : "), upload_to="docs/", default="", validators=[validate_file_extension])
+    publishing_date = models.DateTimeField(
+                        default = timezone.now,
+                        
+                        )
+
+    file            = models.FileField(_(" پیوست : "), upload_to="docs/", default="", validators=[validate_file_extension])   # TODO: blank
     objects         = EventManager()
     delete_status   = models.BooleanField(_(" بعد از یک سال پاک شود ؟ "), default=True)  #TODO : default true or false
+    
+    allow_for_l_1   = models.BooleanField(default=False)
+    allow_for_l_2   = models.BooleanField(default=False)
+    allow_for_l_3   = models.BooleanField(default=False)
+    read   = models.BooleanField(default=False)
+
+
+    class Meta:
+        ordering = ['-publishing_date']

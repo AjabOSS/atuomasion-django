@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <center>
+    <h2>Edit {{ object }} </h2>
+    <hr>
+    <form action = "" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type = "submit" class="btn btn-primary">Update</button>
+    </center>
+{% endblock content %}
+    

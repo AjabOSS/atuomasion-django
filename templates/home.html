@@ -1,38 +1,31 @@
-{% load static %}
+{% extends 'base.html' %}
 
 
-{% if user.is_authenticated %}
-    <span>{{user}}</span> | <a href="{% url 'logout' %}">Log Out</a>
-{% else %}
-    <a href="{% url 'login' %}">Login</a>
+{% block content %}
+
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item"> موضوع :</li>
+    <li class="list-group-item"> فرستنده :</li>
+    <li class="list-group-item"> گیرنده :</li>
+    <li class="list-group-item"> زمان ارسال :</li>
+    <li class="list-group-item"><a href="{{a.file.url}}" download="{{a.file.url}}">Download</a> </li>
+</ul>
+
+
+{% if user.is_level_1 %}
+    <p>is level one</p>
 {% endif %}
     
 
-<hr>
-<h1> user : {{ user }} | username : {{ user.username }} </h1>
-
-{% for a in letter %}
-    
-    {% if a.author == user %}
-        <p>{{a.author}}</p>
-        <p>{{a.file}}</p>
-        {{a.title}} : <a href="{{a.file.url}}" download="{{a.file.url}}">Download</a>
-
-    <hr>
-    {% endif %}
-    
-{% endfor %}
-
-
-<hr>
-
-<style>
-.a {
-    color: green
-}
-</style>
-
-<p class="a">test green</p>
+{% if user.is_level_2 %}
+    <p>is level two</p>
+{% endif %}
     
 
+{% if user.is_level_3 %}
+    <p>is level three</p>
+{% endif %}
+    
+
+{% endblock content %}
     
