@@ -47,8 +47,14 @@ class Letter(models.Model):
     allow_for_l_1   = models.BooleanField(default=False)
     allow_for_l_2   = models.BooleanField(default=False)
     allow_for_l_3   = models.BooleanField(default=False)
-    read   = models.BooleanField(default=False)
+    read            = models.BooleanField(default=False)
+    replay          = models.ManyToManyField("Letter", related_name="letters", blank=True, null=True)
+    
+    reject          = models.BooleanField(default=False)
+    reject_description = models.CharField(max_length=255, blank=True, null=True)
 
-
+    
+    
+    
     class Meta:
         ordering = ['-publishing_date']

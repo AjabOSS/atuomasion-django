@@ -2,9 +2,39 @@
 
 
 {% block content %}
-<form method="post" action="">
+<form method="POST" action="">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Send</button>
 </form>
 {% endblock content %}
+    
+
+    
+{% comment %} 
+<form method="GET" action="">
+    <input type="hidden" name="csrfmiddlewaretoken" value="y0m4aTUImakQrfP7YEdvya1k47ypMtVlcbxOpgYNfHHIgg9mpC1ZK4NsAvpjjkzi">    
+    <label for="id_title">موضوع  :</label>
+      <input type="text" name="title" maxlength="50" required="" id="id_title">        
+    <label for="id_description">توضیحات  :</label>
+      <textarea name="description" cols="40" rows="10" maxlength="255" required="" id="id_description"></textarea>
+    <label for="id_target">Target:</label>
+      <select name="target" required="" id="id_target">
+  <option value="" selected="">---------</option>
+  <option value="1">admin</option>
+  <option value="2">arman</option>
+  <option value="3">ali</option>
+  <option value="4">artin</option>
+</select>    
+    <label for="id_file"> پیوست : :</label>
+      <input type="file" name="file" required="" id="id_file">
+    <label for="id_author">Author:</label>
+      <select name="author" required="" id="id_author">
+  <option value="" selected="">---------</option>
+  <option value="1">admin</option>
+  <option value="2">arman</option>
+  <option value="3">ali</option>
+  <option value="4">artin</option>
+</select>
+    <button type="submit">Send</button>
+</form> {% endcomment %}

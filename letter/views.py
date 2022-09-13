@@ -1,8 +1,10 @@
+
 from django.shortcuts import render
 from .models import Letter
 from django.views.generic import ListView , DetailView , TemplateView
 from django.views.generic.edit import UpdateView , DeleteView  , CreateView
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
 
 
 class LetterCreateView(CreateView):
@@ -20,7 +22,7 @@ def message_view(request, pk):
     message.read = True
     message.save()
 
-    return render(request, 'letter/letter_detail.html')
+    return render(request, 'letter/letter_detail.html', {"detail": message})
         
 
 class LetterUpdateView(UpdateView):
@@ -43,3 +45,14 @@ def letter_inbox(request):
         "letter" : letter
     }
     return render(request, "letter/letter_inbox.html", context)
+
+def reject_letter(request, pk):
+    message = Letter.objects.get(id=pk)
+    message.allow_for_l_1 = False
+    message.allow_for_l_2 = False
+    message.allow_for_l_3 = False
+    message.reject = True
+
+    message.save()
+
+    return redirect('letter_inbox')
