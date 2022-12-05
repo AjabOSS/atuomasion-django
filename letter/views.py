@@ -56,3 +56,18 @@ def reject_letter(request, pk):
     message.save()
 
     return redirect('letter_inbox')
+
+# def accept_letter(request, pk):
+#     message = Letter.objects.get(id=pk)
+#     message.allow_for_l_1 = True
+#     message.allow_for_l_2 = True
+#     message.allow_for_l_3 = True
+#     message.reject = False
+
+#     message.save()
+
+#     return redirect('letter_inbox')
+
+
+
+ 

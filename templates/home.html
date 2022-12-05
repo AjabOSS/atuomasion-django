@@ -3,29 +3,41 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+
+{% comment %} 
 <ul class="list-group list-group-horizontal">
     <li class="list-group-item"> موضوع :</li>
     <li class="list-group-item"> فرستنده :</li>
     <li class="list-group-item"> گیرنده :</li>
     <li class="list-group-item"> زمان ارسال :</li>
     <li class="list-group-item"><a href="{{a.file.url}}" download="{{a.file.url}}">Download</a> </li>
-</ul>
+</ul> {% endcomment %}
+
+<center>
+    {% if user.is_level_1 %}
+        <h1>is level 1</h1>
+    {% endif %}
+        
+
+    {% if user.is_level_2 %}
+        <h1>is level 2</h1>
+    {% endif %}
+        
+
+    {% if user.is_level_3 %}
+        <h1>is level 3</h1>
+    {% endif %}
+        
+
+    {% if user.is_superuser %}
+        <h1>superuser</h1>
+    {% endif %}
+</center>
 
 
-{% if user.is_level_1 %}
-    <p>is level one</p>
-{% endif %}
-    
-
-{% if user.is_level_2 %}
-    <p>is level two</p>
-{% endif %}
-    
-
-{% if user.is_level_3 %}
-    <p>is level three</p>
-{% endif %}
-    
 
 {% endblock content %}
     

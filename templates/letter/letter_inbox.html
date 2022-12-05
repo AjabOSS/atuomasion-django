@@ -17,10 +17,11 @@
         <li class="list-group-item"> گیرنده : {{a.target}}</li>
         <li class="list-group-item"> خوانده شده : {{a.read}}</li>
         <li class="list-group-item"> زمان ارسال : {{a.publishing_date}}</li>
-        <li class="list-group-item"><a href="{{a.file.url}}" download="{{a.file.url}}">Download</a> </li>
+        {% comment %} <li class="list-group-item"><a href="{{a.file.url}}" download="{{a.file.url}}">Download</a> </li> {% endcomment %}
         <li class="list-group-item"><a href="{% url 'letter_detail' a.pk %}">Details</a></li>
         {% if user.is_level_2 or user.is_superuser %}
           <li class="list-group-item"><a href="{% url 'reject_letter' a.pk %}">Reject</a></li>
+          {% comment %} <li class="list-group-item"><a href="{% url 'accept_letter' a.pk %}">Accept</a></li> {% endcomment %}
         {% endif %}
       </ul>
     {% endif %}

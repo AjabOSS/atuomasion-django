@@ -40,7 +40,7 @@ class Letter(models.Model):
                         
                         )
 
-    file            = models.FileField(_(" پیوست : "), upload_to="docs/", default="", validators=[validate_file_extension])   # TODO: blank
+    file            = models.FileField(_(" پیوست : "), upload_to="docs/", default="", blank = "True", validators=[validate_file_extension])   # TODO: blank
     objects         = EventManager()
     delete_status   = models.BooleanField(_(" بعد از یک سال پاک شود ؟ "), default=True)  #TODO : default true or false
     
@@ -51,10 +51,13 @@ class Letter(models.Model):
     replay          = models.ManyToManyField("Letter", related_name="letters", blank=True, null=True)
     
     reject          = models.BooleanField(default=False)
+    accepted        = models.BooleanField(default=False)
+    
     reject_description = models.CharField(max_length=255, blank=True, null=True)
 
     
-    
-    
     class Meta:
         ordering = ['-publishing_date']
+
+    # class Allow(models.Model):
+    #     perm        = models.CharField(_("دسترسی  "), max_length=50)
